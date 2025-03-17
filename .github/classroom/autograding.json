@@ -1,0 +1,94 @@
+{
+    "tests": [
+      {
+        "name": "test_moves1",
+        "run": "pytest test_nqueens.py::test_moves_4a",
+        "timeout": 2,
+        "points": 3
+      },  
+      {
+        "name": "test_moves2",
+        "run": "pytest test_nqueens.py::test_moves_4b",
+        "timeout": 2,
+        "points": 3
+      }, 
+      {
+        "name": "test_moves3",
+        "run": "pytest test_nqueens.py::test_moves_4c",
+        "timeout": 2,
+        "points": 3
+      },   
+      {
+        "name": "test_moves4",
+        "run": "pytest test_nqueens.py::test_moves_6a",
+        "timeout": 2,
+        "points": 3
+      },      
+      {
+        "name": "test_neighbor1",
+        "run": "pytest test_nqueens.py::test_neighbor_4a",
+        "timeout": 2,
+        "points": 6
+      },  
+      {
+        "name": "test_neighbor2",
+        "run": "pytest test_nqueens.py::test_neighbor_6a",
+        "timeout": 2,
+        "points": 6
+      }, 
+      {
+        "name": "test_cost1",
+        "run": "pytest test_nqueens.py::test_cost_4a",
+        "timeout": 2,
+        "points": 3
+      },  
+      {
+        "name": "test_cost2",
+        "run": "pytest test_nqueens.py::test_cost_4b",
+        "timeout": 2,
+        "points": 3
+      }, 
+      {
+        "name": "test_cost3",
+        "run": "pytest test_nqueens.py::test_cost_4c",
+        "timeout": 2,
+        "points": 3
+      },   
+      {
+        "name": "test_cost4",
+        "run": "pytest test_nqueens.py::test_cost_6a",
+        "timeout": 2,
+        "points": 3
+      }, 
+      {
+        "name": "test_cost5",
+        "run": "pytest test_nqueens.py::test_cost_8a",
+        "timeout": 2,
+        "points": 3
+      },   
+      {
+        "name": "test_cost6",
+        "run": "pytest test_nqueens.py::test_cost_8b",
+        "timeout": 2,
+        "points": 3
+      },        
+      {
+        "name": "test_anneal1",
+        "run": "pytest test_nqueens.py::test_anneal_4b",
+        "timeout": 2,
+        "points": 11
+      }, 
+      {
+        "name": "test_anneal2",
+        "run": "pytest test_nqueens.py::test_anneal_6a",
+        "timeout": 2,
+        "points": 11
+      },   
+      {
+        "name": "test_anneal3",
+        "run": "pytest test_nqueens.py::test_anneal_8b",
+        "timeout": 2,
+        "points": 11
+      }                        
+    ]
+}
