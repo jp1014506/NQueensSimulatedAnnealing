@@ -64,7 +64,7 @@ class Agent():
     def anneal(self, board):
         """Return a list of moves to adjust queen placements."""
         current = board
-        t = 100.0
+        t = 1000.0
         decay = 0.95
         min_temp = 0.001
         path = []
