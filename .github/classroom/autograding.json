@@ -92,25 +92,25 @@
       },
       {
         "name": "test_moves5",
-        "run": "pytest test_nqueens.py::test_moves_5a",
+        "run": "pytest test_nqueens_heldout.py::test_moves_5a",
         "timeout": 2,
         "points": 4
       },
       {
         "name": "test_neighbor3",
-        "run": "pytest test_nqueens.py::test_neighbor_5a",
+        "run": "pytest test_nqueens_heldout.py::test_neighbor_5a",
         "timeout": 2,
         "points": 6
       },
       {
         "name": "test_cost7",
-        "run": "pytest test_nqueens.py::test_cost_5a",
+        "run": "pytest test_nqueens_heldout.py::test_cost_5a",
         "timeout": 2,
         "points": 4
       },  
       {
         "name": "test_anneal4",
-        "run": "pytest test_nqueens.py::test_anneal_5a",
+        "run": "pytest test_nqueens_heldout.py::test_anneal_5a",
         "timeout": 2,
         "points": 11
       }                                       
