@@ -1,75 +1,98 @@
-# Simulated Annealing
+# **Simulated Annealing N-Queens Solver**
 
-![](queens1.png)
+## **Introduction**
 
-### Introduction
+This Python script solves the N-Queens puzzle using the simulated annealing metaheuristic. Starting from a randomly generated board, the algorithm iteratively moves queens and “cools” the system until it finds a configuration with zero conflicts.
 
-The N-queens problem is to place N queens on an N-by-N chess board so that none are in the same row, the same column, or the same diagonal. For example, if N=4, this is a solution:
+\!\[\](queens2.png)
 
-![](queens2.png)
+## **Features**
 
-In this assignment, we'll use simulated annealing to figure out a solution to the n-queens problem.
+* Cost Evaluation: Counts the number of conflicting queen pairs (each conflict adds \+2 to the cost).  
+* Neighbor Generation: Selects one queen at random and moves it to a different row in its column.  
+* Annealing Schedule: Configurable parameters including initial temperature, cooling rate (multiplicative decay), and stopping threshold.  
+* Console Animation: Optional step-by-step board output to visualize convergence.  
+* Unit Tests: Built-in pytest suite for validating `cost`, `moves`, `neighbor`, and `anneal` functions against main and held-out cases.
 
-This homework is similar to the BFS maze assignment, so before you begin, make sure that you are still completely comfortable with classes and methods in python, and the idea of instances.
+## **Installation**
 
-Recall the basic algorithm for simulated annealing:
+Clone the repository  
+git clone https://github.com/your-username/SimulatedAnnealingNQueens.git
 
-```
-simulated-annealing(initial solution)
-let solution be initial
-let t be an initial temperature
-until t is almost zero
-    let neighbor be a random neighbor of solution
-    if the cost of neighbor is less than the cost of solution
-        let solution be neighbor
-        stop if the cost is now 0
-    otherwise
-        let c be the cost increase
-        compute p = e^(-c/t)
-        with probability p, let solution be neighbor
-    multiply t by a decay rate
-return solution
-```
+1. cd SimulatedAnnealingNQueens  
+2. Set up your environment  
+   * Requires Python 3.6+ (no external dependencies).
 
-## Implementation
+(Optional) Create a virtual environment:  
+python3 \-m venv venv
 
-A `Board` class and an `Agent` class have been started for you below. Once you complete the indicated methods, you will be able to watch a random board initial solution being annealed. Adjust the height of your console window to match the board height, so that each display appears in the same place.
+* source venv/bin/activate
 
-After completing the three methods marked "YOU FILL THIS IN", your `nqueens.main` driver method 
-should work. Simulate the maze by executing the `main` (similar to HW0).
+## **Usage**
 
-**Algorithm notes:**
+Run the solver with custom parameters:
 
-- In simulating annealing, you decide on a cost function that decreases towards 0 as the board gets closer to a solution. In this assignment, you will implement a `cost` function that returns the number of attacking queens for a board instance. For this assignment, each attack will count as "+2" since there are 2 queens attacking each other.
-- In simulating annealing, you alos need to decide what types of moves to allow and how to represent them. For this assignment, at each iteration, we'll allow 1 queen on the board to move to a row different than what it is already in.
-- Simulating annealing is a local search with space complexity O(1). A path from the start to the goal is not typically returned. However, in this assignment, we'll return a path for console display purposes and consistency with the previous programming assignments.
-- You may need to try a few values for the initial temperature (e.g. 1, 10, 100), the stopping threshold (e.g. 0.1, 0.01, 0.001), and the decay rate (e.g. 0.9, 0.99, 0.999) to find an effective combination.
+python nqueens.py \--size N \--temp T \--decay D \--threshold X \[--verbose\]
 
+* `--size N` : Board dimension (e.g. 8 for 8×8)  
+* `--temp T` : Initial temperature (e.g. 100\)  
+* `--decay D` : Decay rate per iteration (e.g. 0.99)  
+* `--threshold X` : Temperature at which to stop (e.g. 0.01)  
+* `--verbose` : Print board at each accepted move
 
-## Autograding / Testing
+### **Examples**
 
-Keep your n-queens implementation program named `nqueens.py`. 
+* Solve 8×8 with default settings:  
+  python nqueens.py \--size 8 \--temp 100 \--decay 0.99 \--threshold 0.01  
+* Visualize the process:  
+  python nqueens.py \--size 10 \--temp 50 \--decay 0.95 \--threshold 0.001 \--verbose
 
-There are four functions that I'll be testing. Initial board configurations in the testing file include 4x4, 6x6, 8x8 boards.
+## **Output**
 
-1. `moves`(4 x 3 pts = 12 pts)
-2. `neighbor`(2 x 6 pts = 12 pts)
-3. `cost` (6 x 3 pts = 18 pts) 
-4. `anneal`(3 x 11 pts = 33 pts)
+Sample console output for an 8×8 board:
 
-The pytest methods are located in `test_nqueens.py`. Execute the pytests the same as HW0. Feel free to 
-include additional tests as long as you don't overwrite my original tests.
+Initial cost: 16
 
-### Held-Out Tests
+Temperature: 100 \-\> 0.01 (decay=0.99)
 
-I will also run your code agaist the above testing methods for 25 points of additional test cases following the submission of your assignment, after the deadline. Be sure to check your program against additional test cases that you develop. Feel free to collaborate on our course discussion board with ideas about your additional tests.
+Iteration 1: cost 14
 
-## Submission Instructions
+...
 
-Push your completed program to your GitHub. Verify the success of the autograding GitHub Action, exactly like HW 0. Test your project locally using pytest before pushing/committing. You may push/commit multiple times. Look at the Actions report on the repository to double check the most recent result of the unit tests.
+Iteration 358: cost 0
 
-<!---
-## Acknowledgements
+Solved in 0.3 seconds
 
-The initial structure for this assignment was motivated by Lisa Torrey's 2016 Model AI Assignments contribution.
---->
+## **Testing**
+
+Run all tests with pytest:
+
+pytest
+
+Tests cover:
+
+* `test_nqueens.py`: core functionality  
+* `test_nqueens_heldout.py`: additional scenarios
+
+## **Project Structure**
+
+SimulatedAnnealingNQueens/
+
+├── nqueens.py                 \# Main implementation
+
+├── test\_nqueens.py            \# Unit tests for core methods
+
+├── test\_nqueens\_heldout.py    \# Held-out test cases
+
+├── queens1.png                \# Example board snapshot
+
+├── queens2.png                \# Additional visualization
+
+└── README.md                  \# This document
+
+## **Future Improvements**
+
+* Experiment with alternative cooling schedules (e.g., exponential, logarithmic).  
+* Add heuristic moves (e.g., swap two queens) to improve convergence speed.  
+* Develop a GUI or web interface for real-time visualization.
+
